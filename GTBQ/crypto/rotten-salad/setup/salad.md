@@ -1,0 +1,1 @@
+[salad](https://gchq.github.io/CyberChef/#recipe=ROT47(19)&input=Q2Flc2FyIFNhbGFkIFJlY2lwZToKUm9tYWluZSBsZXR0dWNlClBhcm1lc2FuIGNoZWVzZQpDcmlzcCBjcm91dG9ucwpHVEJRezN0X1R1X2JSdXQzP30&oenc=65001)

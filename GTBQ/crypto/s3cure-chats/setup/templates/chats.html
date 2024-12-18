@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Page</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="top-options">
+                <form action="/chats" method="get">
+                    <button type="submit">Chats</button>
+                </form>
+                <form action="/secrets" method="get">
+                    <button type="submit">Secrets</button>
+                </form>
+                <form action="/users" method="get">
+                    <button type="submit">Users</button>
+                </form>
+                <form action="/profile" method="get">
+                    <button type="submit">Profile</button>
+                </form>
+                <form action="/logout" method="get">
+                    <button type="submit">Logout</button>
+                </form>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <!-- Display past messages -->
+        {% for message in messages %}
+        <div class="message">
+            <a href="/users/{{ message[0] }}" class="avatar-link">
+            <div class="avatar" style="background-image: url('static/avatars/{{message[0]}}.png')"></div>
+            </a>
+            <div class="message-content">
+                {% if message[0] == session['username'] %}
+                <p class="sender-name">You</p>
+                {% else %}
+                <p class="sender-name">{{ message[0] }}</p>
+                {% endif %}
+                <p class="message-content">{{ message[1] }}</p>
+            </div>
+        </div>
+        {% endfor %}
+
+        <!-- Form for posting new messages -->
+        <form action="/chats" method="post">
+            <input type="text" placeholder="Enter your message" name="message" required>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+</body>
+</html>

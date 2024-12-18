@@ -1,0 +1,1 @@
+FLAG='GTBQ{g0tt4_l0v3_GCD_&_mult1_Pr1me_rs4}'

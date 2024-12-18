@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safe Chats</title>
+    <link rel="stylesheet" href="static/styles.css">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="top-options">
+                <form action="/chats" method="get">
+                    <button type="submit">Chats</button>
+                </form>
+                <form action="/secrets" method="get">
+                    <button type="submit">Secrets</button>
+                </form>
+                <form action="/users" method="get">
+                    <button type="submit">Users</button>
+                </form>
+                <form action="/profile" method="get">
+                    <button type="submit">Profile</button>
+                </form>
+                <form action="/logout" method="get">
+                    <button type="submit">Logout</button>
+                </form>
+            </div>
+        </nav>
+    </header>
+    <h1>Safe Chats</h1>
+
+    <div class="container">
+        <!-- Add this block to display flashed messages -->
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div id="error-message" style="color: red;">
+            {{ messages[0] }}
+        </div>
+        {% endif %}
+        {% endwith %}
+
+        <!-- Form for Registration and RSA Key Generation -->
+        <form action="/register" method="post">
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Enter your username" name="username" required>
+
+            <label for="n_length"><b>Select N Length:</b></label>
+            <br>
+            <select name="n_length" id="n_length">
+                <option value="1024">1024 bits</option>
+                <option value="2048">2048 bits</option>
+                <option value="3072">3072 bits</option>
+                <!-- Add more options as needed -->
+            </select>
+            <br>
+            <label for="e"><b>Enter Public Exponent (e):</b></label>
+<input type="text" name="e" placeholder="Preferably 65537" id="e" required pattern="[0-9]+" title="Please enter a valid positive integer (e.g., 65537)">
+            <button type="submit">Register and Generate Key Pair</button>
+        </form>
+    </div>
+</body>
+</html>

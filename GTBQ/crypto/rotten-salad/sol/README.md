@@ -1,0 +1,1 @@
+[salad](https://gchq.github.io/CyberChef/#recipe=ROT47_Brute_Force(100,0,true,'GTBQ%7B')&input=VnR4KHQnIGZ0IXR3IGV4dnwleE0KZSQidHwjeCAheCkpKnZ4CmN0JyJ4KHQjIHZ7eHgoeApWJ3woJSB2JyQqKSQjKApaZ1VkMEYpcmcqcnVlKilGUjI&oenc=65001)

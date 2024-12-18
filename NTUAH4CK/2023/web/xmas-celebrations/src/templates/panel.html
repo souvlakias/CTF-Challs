@@ -1,0 +1,28 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Panel</title>
+  <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<body>
+    <div class="bg">
+        <h1 style="color: #FFA500; text-align: center; font-size: 6em; font-family: 'Lobster';">Admin Panel</h1>
+        <form action="/panel" method="post" style="background-color: #f8f9fa; padding: 20px; border-radius: 5px;">
+            <input type="text" name="url" placeholder="Enter url to visit" required style="width: 100%; padding: 10px; margin-bottom: 10px;font-family: 'Lobster';">
+            <button type="submit" style="background-color: #007bff; color: white; padding: 10px 20px; border: none; cursor: pointer;font-family: 'Lobster';" class="button">Submit</button>
+        </form>
+        {% if error %}
+        <p style="color: #008080; text-align: center; font-size: 3.5em; font-family: 'Lobster';">{{ error }}</p>
+        {% endif %}
+        {% if data %}
+        <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+            <iframe srcdoc="{{ data }}" width="800" height="600"></iframe>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
+<!-- NOTES -->
+<!-- application is running on port 1337, so i blocked the substring so noone can make internal requests -->

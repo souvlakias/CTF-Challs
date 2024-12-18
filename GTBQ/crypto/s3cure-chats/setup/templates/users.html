@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="../static/styles.css">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="top-options">
+                <form action="/chats" method="get">
+                    <button type="submit">Chats</button>
+                </form>
+                <form action="/secrets" method="get">
+                    <button type="submit">Secrets</button>
+                </form>
+                <form action="/users" method="get">
+                    <button type="submit">Users</button>
+                </form>
+                <form action="/profile" method="get">
+                    <button type="submit">Profile</button>
+                </form>
+                <form action="/logout" method="get">
+                    <button type="submit">Logout</button>
+                </form>
+            </div>
+        </nav>
+    </header>
+    {% for user in users %}
+
+    <div class="profile">
+        <a href="/users/{{ user[0] }}" class="avatar-link">
+        <div class="bigavatar" style="background-image: url('../static/avatars/{{user[0]}}.png')"></div>
+        </a>
+        <div class="user-info">
+            <p class="user-name">{{ user[0] }}</p>
+            <p class="user-description">{{ user[1] }}</p>
+            <button id="copyButton{{user[0]}}">Copy to Clipboard</button>
+            <script>
+                document.getElementById('copyButton{{user[0]}}').addEventListener('click', function() {
+                    const textArea = document.createElement('textarea');
+                    textArea.value = `{{ user[1] }}`;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textArea);
+                    alert('Text copied to clipboard!');
+                });
+            </script>
+        </div>
+    </div>
+    
+    
+    {% endfor %}
+
+
+</body>
+</html>
+
+
